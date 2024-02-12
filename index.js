@@ -15,7 +15,12 @@ const shoppingListEl = document.getElementById("shopping-list")
 
 addButtonEl.addEventListener("click", function() {
     let inputValue = inputFieldEl.value
-    
+
+    if(inputValue.trim() ==""){
+        inputFieldEl.placeholder = "⚠️cant add empty text"
+        return
+    }
+    inputFieldEl.placeholder = "bread"
     push(shoppingListInDB, inputValue)
     
     clearInputFieldEl()
@@ -31,12 +36,8 @@ onValue(shoppingListInDB, function(snapshot) {
             let currentItem = itemsArray[i]
             let currentItemID = currentItem[0]
             let currentItemValue = currentItem[1]
-            if(currentItemValue==""){
-                    alert("empty")
-            }else{
-                appendItemToShoppingListEl(currentItem)
-            }
             
+            appendItemToShoppingListEl(currentItem)
         }    
     } else {
         shoppingListEl.innerHTML = "No items here... yet"
