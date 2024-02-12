@@ -31,8 +31,12 @@ onValue(shoppingListInDB, function(snapshot) {
             let currentItem = itemsArray[i]
             let currentItemID = currentItem[0]
             let currentItemValue = currentItem[1]
+            if(currentItemValue==""){
+                    alert("empty")
+            }else{
+                appendItemToShoppingListEl(currentItem)
+            }
             
-            appendItemToShoppingListEl(currentItem)
         }    
     } else {
         shoppingListEl.innerHTML = "No items here... yet"
